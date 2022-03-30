@@ -87,5 +87,7 @@ public class CommonWebElementPage extends BasePage{
         actions.moveToElement(Driver.getDriver().findElement(By.xpath(sf))).click().perform();
     }
 
+    // added 2 methods from basePage. Delete this message after the push.
+
 
 }
