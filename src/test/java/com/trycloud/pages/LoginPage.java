@@ -8,24 +8,43 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
 
-   public LoginPage(){
-       PageFactory.initElements(Driver.getDriver(), this);
-   }
+    public LoginPage(){
+        PageFactory.initElements(Driver.getDriver(),this);
+    }
 
-    @FindBy(xpath = "//input[@id='user']")
-    public WebElement username;
+    @FindBy(id = "user")
+    public WebElement userInput;
 
-    @FindBy(xpath = "//input[@id='password']")
-    public WebElement password;
+    @FindBy(id = "password")
+    public WebElement passwordInput;
 
-    @FindBy(xpath = "//input[@id='submit-form']")
-    public WebElement signInButton;
+    @FindBy(id = "submit-form")
+    public WebElement submitFormInput;
+
+    @FindBy(id = "lost-password")
+    public WebElement lostpasswordLink;
+
+    @FindBy(xpath = "//a[normalize-space(text()) = 'Log in with a device']")
+    public WebElement elementLink;
+
+    @FindBy(css = ".info")
+    public WebElement infoP;
+
+    @FindBy(xpath = "//p[@class='warning wrongPasswordMsg']")
+    public WebElement warningMessage;
 
 
-    public void login(){
-        this.username.sendKeys(ConfigurationReader.getProperty("username"));
-        this.password.sendKeys(ConfigurationReader.getProperty("password"));
-        this.signInButton.click();
+
+    public void loginBy(String username, String password) {
+        userInput.sendKeys(username);
+        passwordInput.sendKeys(password);
+        submitFormInput.click();
+    }
+
+    public void loginBy() {
+        userInput.sendKeys(ConfigurationReader.getProperty("username"));
+        passwordInput.sendKeys(ConfigurationReader.getProperty("password"));
+        submitFormInput.click();
     }
 
 }
