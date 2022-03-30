@@ -11,18 +11,5 @@ public abstract class BasePage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    public static Actions actions = new Actions(Driver.getDriver());
-
-    public static void headerModule(String head) {
-        String s = "//span[normalize-space(text())='" + head + "']";
-        actions.moveToElement(Driver.getDriver().findElement(By.xpath(s))).click().perform();
-    }
-
-
-    public static void sideModule(String moduleName) {
-        String sf = "//li[starts-with(@class,'nav')]/a[text()='" + moduleName + "']";
-        actions.moveToElement(Driver.getDriver().findElement(By.xpath(sf))).click().perform();
-    }
-
 
 }
