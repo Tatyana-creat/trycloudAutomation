@@ -58,7 +58,7 @@ public class CommonWebElementPage extends BasePage{
     @FindBy(xpath = "//h2[.='No favorites yet']")
     public WebElement verifiyNoFile;
 
-    @FindBy(xpath = "//span[.='Upload file']")
+    @FindBy(xpath = "//input[@id='file_upload_start']")
     public WebElement uploadFile;
 
     @FindBy(xpath = "//span[@class='nametext']/span[1]")
@@ -74,20 +74,19 @@ public class CommonWebElementPage extends BasePage{
     public WebElement iconConfirmButton;
 
 
-    public static Actions actions = new Actions(Driver.getDriver());
-
     public static void headerModule(String head) {
+        Actions actions = new Actions(Driver.getDriver());
         String s = "//span[normalize-space(text())='" + head + "']";
         actions.moveToElement(Driver.getDriver().findElement(By.xpath(s))).click().perform();
     }
 
 
     public static void sideModule(String moduleName) {
+        Actions actions = new Actions(Driver.getDriver());
         String sf = "//li[starts-with(@class,'nav')]/a[text()='" + moduleName + "']";
         actions.moveToElement(Driver.getDriver().findElement(By.xpath(sf))).click().perform();
     }
 
-    // added 2 methods from basePage. Delete this message after the push.
 
 
 }
